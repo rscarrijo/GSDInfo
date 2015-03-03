@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Müller, Andreas (Phoenix Contact GmbH & Co) -->
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\XSD\GSDML-DeviceProfile-v1.0.xsd">
+	<ProfileHeader>
+		<ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+		<ProfileRevision>1.00</ProfileRevision>
+		<ProfileName>Device Profile for PROFINET Devices</ProfileName>
+		<ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+		<ProfileClassID>Device</ProfileClassID>
+		<ISO15745Reference>
+			<ISO15745Part>4</ISO15745Part>
+			<ISO15745Edition>1</ISO15745Edition>
+			<ProfileTechnology>GSDML</ProfileTechnology>
+		</ISO15745Reference>
+	</ProfileHeader>
+	<ProfileBody>
+		<DeviceIdentity DeviceID="0x0004" VendorID="0x00B0">
+			<InfoText TextId="Inline Block digitales Ein-/Ausgangsmodul für PROFINET IO-Systeme"/>
+			<VendorName Value="Phoenix Contact"/>
+		</DeviceIdentity>
+		<DeviceFunction>
+			<Family MainFamily="I/O"/>
+		</DeviceFunction>
+		<ApplicationProcess>
+			<DeviceAccessPointList>
+				<DeviceAccessPointItem ID="DIM 1" FixedInSlots="0" PhysicalSlots="0..2" MinDeviceInterval="64" ModuleIdentNumber="0x00000300" DNS_CompatibleName="ILB-PN-DIO" ImplementationType="NetArm" ObjectUUID_LocalIndex="1">
+					<ModuleInfo>
+						<Name TextId="ILB PN 24 DI 16 DIO16"/>
+						<InfoText TextId="Inline Block digitales Ein-/Ausgangsmodul für PROFINET IO-Systeme"/>
+						<VendorName Value="Phoenix Contact"/>
+						<OrderNumber Value="2878146 GSD: 2007-10-15 V1.0"/>
+						<HardwareRelease Value="02"/>
+						<SoftwareRelease Value="1.10"/>
+					</ModuleInfo>
+					<IOConfigData MaxInputLength="512" MaxOutputLength="512"/>
+					<UseableModules>
+						<ModuleItemRef ModuleItemTarget="1" FixedInSlots="1"/>
+						<ModuleItemRef ModuleItemTarget="2" FixedInSlots="2"/>
+						<!--Die Referenzen zeigen auf die Module der ModuleList -->
+					</UseableModules>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="DIM 1" SubmoduleIdentNumber="0x00000001">
+							<IOData IOCS_Length="1" IOPS_Length="1"/>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="2">
+									<Name TextId="Alarmverhalten"/>
+									<Const Data="0x01,0x00" ByteOffset="0"/>
+									<Ref TextId="Diagnosealarme" Visible="true" DataType="Bit" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0 1" DefaultValue="1" ValueItemTarget="Diagnosealarme"/>
+									<Ref TextId="ReturnOfSubmodul Alarm" Visible="false" DataType="Bit" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="ReturnOfSubmodul Alarm"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+					<Graphics>
+						<GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="1"/>
+						<!--<GraphicItemRef State="SF" GraphicItemTarget="2"/>-->
+					</Graphics>
+				</DeviceAccessPointItem>
+			</DeviceAccessPointList>
+			<ModuleList>
+				<ModuleItem ID="1" ModuleIdentNumber="0x00000001">
+					<ModuleInfo CategoryRef="Inline Block IO" SubCategory1Ref="Digitale Ein-/Ausgänge">
+						<Name TextId="16 digitale Ein-/Ausgänge"/>
+						<InfoText TextId="16 digitale Ein-/Ausgänge"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="1" SubmoduleIdentNumber="0x00000001">
+							<IOData IOCS_Length="1" IOPS_Length="1">
+								<Input>
+									<DataItem TextId="16 digitale Eingänge" DataType="Unsigned16" UseAsBits="true"/>
+								</Input>
+								<Output>
+									<DataItem TextId="16 digitale Ausgänge" DataType="Unsigned16" UseAsBits="true"/>
+								</Output>
+							</IOData>
+							<RecordDataList>
+								<ParameterRecordDataItem Index="1" Length="3" TransferSequence="0">
+									<Name TextId="Ersatzwertstrategie"/>
+									<Const Data="0x01,0x00,0x00" ByteOffset="0"/>
+									<Ref TextId="Ersatzwertverhalten" Visible="true" DataType="Bit" BitOffset="0" ByteOffset="0" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwertverhalten"/>
+									<Ref TextId="Ersatzwert IO1.1" Visible="true" DataType="Bit" BitOffset="0" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO1.1"/>
+									<Ref TextId="Ersatzwert IO1.2" Visible="true" DataType="Bit" BitOffset="1" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO1.2"/>
+									<Ref TextId="Ersatzwert IO1.3" Visible="true" DataType="Bit" BitOffset="2" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO1.3"/>
+									<Ref TextId="Ersatzwert IO1.4" Visible="true" DataType="Bit" BitOffset="3" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO1.4"/>
+									<Ref TextId="Ersatzwert IO2.1" Visible="true" DataType="Bit" BitOffset="4" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO2.1"/>
+									<Ref TextId="Ersatzwert IO2.2" Visible="true" DataType="Bit" BitOffset="5" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO2.2"/>
+									<Ref TextId="Ersatzwert IO2.3" Visible="true" DataType="Bit" BitOffset="6" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO2.3"/>
+									<Ref TextId="Ersatzwert IO2.4" Visible="true" DataType="Bit" BitOffset="7" ByteOffset="1" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO2.4"/>
+									<Ref TextId="Ersatzwert IO3.1" Visible="true" DataType="Bit" BitOffset="0" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO3.1"/>
+									<Ref TextId="Ersatzwert IO3.2" Visible="true" DataType="Bit" BitOffset="1" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO3.2"/>
+									<Ref TextId="Ersatzwert IO3.3" Visible="true" DataType="Bit" BitOffset="2" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO3.3"/>
+									<Ref TextId="Ersatzwert IO3.4" Visible="true" DataType="Bit" BitOffset="3" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO3.4"/>
+									<Ref TextId="Ersatzwert IO4.1" Visible="true" DataType="Bit" BitOffset="4" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO4.1"/>
+									<Ref TextId="Ersatzwert IO4.2" Visible="true" DataType="Bit" BitOffset="5" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO4.2"/>
+									<Ref TextId="Ersatzwert IO4.3" Visible="true" DataType="Bit" BitOffset="6" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO4.3"/>
+									<Ref TextId="Ersatzwert IO4.4" Visible="true" DataType="Bit" BitOffset="7" ByteOffset="2" Changeable="true" AllowedValues="0 1" DefaultValue="0" ValueItemTarget="Ersatzwert IO4.4"/>
+								</ParameterRecordDataItem>
+							</RecordDataList>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+				<ModuleItem ID="2" ModuleIdentNumber="0x00000002">
+					<ModuleInfo CategoryRef="Inline Block IO" SubCategory1Ref="Digitale Eingänge">
+						<Name TextId="16 digitale Eingänge"/>
+						<InfoText TextId="16 digitale Eingänge"/>
+					</ModuleInfo>
+					<VirtualSubmoduleList>
+						<VirtualSubmoduleItem ID="2" SubmoduleIdentNumber="0x00000001">
+							<IOData IOCS_Length="1" IOPS_Length="1">
+								<Input>
+									<DataItem TextId="16 digitale Eingänge" DataType="Unsigned16" UseAsBits="true"/>
+								</Input>
+							</IOData>
+						</VirtualSubmoduleItem>
+					</VirtualSubmoduleList>
+				</ModuleItem>
+			</ModuleList>
+			<ValueList>
+				<ValueItem ID="Ersatzwertverhalten">
+					<Assignments>
+						<Assign TextId="Ersatzwert schalten" Content="0"/>
+						<Assign TextId="Letzten Wert halten" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO1.1">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO1.2">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO1.3">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO1.4">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO2.1">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO2.2">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO2.3">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO2.4">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO3.1">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO3.2">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO3.3">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO3.4">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO4.1">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO4.2">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO4.3">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Ersatzwert IO4.4">
+					<Assignments>
+						<Assign TextId="Wert 0" Content="0"/>
+						<Assign TextId="Wert 1" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="Diagnosealarme">
+					<Assignments>
+						<Assign TextId="Diagnosealarme inaktiv" Content="0"/>
+						<Assign TextId="Diagnosealarme aktiv" Content="1"/>
+					</Assignments>
+				</ValueItem>
+				<ValueItem ID="ReturnOfSubmodul Alarm">
+					<Assignments>
+						<Assign TextId="ReturnOfSubmodul Alarm inaktiv" Content="0"/>
+						<Assign TextId="ReturnOfSubmodul Alarm aktiv" Content="1"/>
+					</Assignments>
+				</ValueItem>
+			</ValueList>
+			<!-- Ab hier beginnen die Diagnose-Texte -->
+			<ChannelDiagList>
+				<ChannelDiagItem ErrorType="20481">
+					<!--Entspricht 0x5001-->
+					<Name TextId="Kurzschluss/Überlast der Ausgänge"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="20482">
+					<!--Entspricht 0x5002-->
+					<Name TextId="Kurzschluss/Überlast der Initiatorversorgung"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="20483">
+					<!--Entspricht 0x5003-->
+					<Name TextId="US1 fehlt oder Unterspannung"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="20484">
+					<!--Entspricht 0x5004-->
+					<Name TextId="US2 fehlt oder Unterspannung"/>
+				</ChannelDiagItem>
+				<ChannelDiagItem ErrorType="12293">
+					<!--Entspricht 0x3005-->
+					<Name TextId="Ethernetverbindung unterbrochen"/>
+				</ChannelDiagItem>
+			</ChannelDiagList>
+			<GraphicsList>
+				<GraphicItem ID="1" GraphicFile="ILB_S"/>
+			</GraphicsList>
+			<CategoryList>
+				<CategoryItem ID="Inline Block IO" TextId="Inline Block IO"/>
+				<CategoryItem ID="Digitale Ein-/Ausgänge" TextId="Digitale Ein-/Ausgänge"/>
+				<CategoryItem ID="Digitale Eingänge" TextId="Digitale Eingänge"/>
+			</CategoryList>
+			<ExternalTextList>
+				<PrimaryLanguage>
+					<Text Value="Inline Block IO" TextId="Inline Block IO"/>
+					<Text Value="digital inputs/outputs" TextId="Digitale Ein-/Ausgänge"/>
+					<Text Value="digital inputs" TextId="Digitale Eingänge"/>
+					<Text Value="ILB DIO 16" TextId="ILB DIO 16"/>
+					<Text Value="ILB PN 24 DI16 DIO16-2TX PHOENIX" TextId="ILB PN 24 DI 16 DIO16"/>
+					<Text Value="Inline Block digital input-/outputmodule for PROFINET IO-Systems" TextId="Inline Block digitales Ein-/Ausgangsmodul für PROFINET IO-Systeme"/>
+					<Text Value="default value cautions" TextId="Ersatzwertverhalten"/>
+					<Text Value="default value strategy" TextId="Ersatzwertstrategie"/>
+					<Text Value="default value IO1.1" TextId="Ersatzwert IO1.1"/>
+					<Text Value="default value IO1.2" TextId="Ersatzwert IO1.2"/>
+					<Text Value="default value IO1.3" TextId="Ersatzwert IO1.3"/>
+					<Text Value="default value IO1.4" TextId="Ersatzwert IO1.4"/>
+					<Text Value="default value IO2.1" TextId="Ersatzwert IO2.1"/>
+					<Text Value="default value IO2.2" TextId="Ersatzwert IO2.2"/>
+					<Text Value="default value IO2.3" TextId="Ersatzwert IO2.3"/>
+					<Text Value="default value IO2.4" TextId="Ersatzwert IO2.4"/>
+					<Text Value="default value IO3.1" TextId="Ersatzwert IO3.1"/>
+					<Text Value="default value IO3.2" TextId="Ersatzwert IO3.2"/>
+					<Text Value="default value IO3.3" TextId="Ersatzwert IO3.3"/>
+					<Text Value="default value IO3.4" TextId="Ersatzwert IO3.4"/>
+					<Text Value="default value IO4.1" TextId="Ersatzwert IO4.1"/>
+					<Text Value="default value IO4.2" TextId="Ersatzwert IO4.2"/>
+					<Text Value="default value IO4.3" TextId="Ersatzwert IO4.3"/>
+					<Text Value="default value IO4.4" TextId="Ersatzwert IO4.4"/>
+					<Text Value="alarm act" TextId="Alarmverhalten"/>
+					<Text Value="diagnostic alarm" TextId="Diagnosealarme"/>
+					<Text Value="ReturnOfSubmodul alarm" TextId="ReturnOfSubmodul Alarm"/>
+					<Text Value="switching default values" TextId="Ersatzwert schalten"/>
+					<Text Value="hold last value" TextId="Letzten Wert halten"/>
+					<Text Value="0" TextId="Wert 0"/>
+					<Text Value="1" TextId="Wert 1"/>
+					<Text Value="activ" TextId="Diagnosealarme aktiv"/>
+					<Text Value="inactiv" TextId="Diagnosealarme inaktiv"/>
+					<Text Value="activ" TextId="ReturnOfSubmodul Alarm aktiv"/>
+					<Text Value="inactiv" TextId="ReturnOfSubmodul Alarm inaktiv"/>
+					<Text Value="DIO 16" TextId="16 digitale Ein-/Ausgänge"/>
+					<Text Value="DI 16" TextId="16 digitale Eingänge"/>
+					<Text Value="DO 16" TextId="16 digitale Ausgänge"/>
+					<Text Value="inputs" TextId="Eingänge"/>
+					<Text Value="short circuit/overload of output terminals" TextId="Kurzschluss/Überlast der Ausgänge"/>
+					<Text Value="short circuit/overload of  initiator supply" TextId="Kurzschluss/Überlast der Initiatorversorgung"/>
+					<Text Value="US1 is missing or undervoltage" TextId="US1 fehlt oder Unterspannung"/>
+					<Text Value="US2 is missing or undervoltage" TextId="US2 fehlt oder Unterspannung"/>
+					<Text Value="Ethernetconnection disconnected" TextId="Ethernetverbindung unterbrochen"/>
+				</PrimaryLanguage>
+				<Language xml:lang="de">
+					<Text Value="Inline Block IO" TextId="Inline Block IO"/>
+					<Text Value="Digitale Ein-/Ausgänge" TextId="Digitale Ein-/Ausgänge"/>
+					<Text Value="Digitale Eingänge" TextId="Digitale Eingänge"/>
+					<Text Value="ILB DIO 16" TextId="ILB DIO 16"/>
+					<Text Value="ILB PN 24 DI16 DIO16-2TX PHOENIX" TextId="ILB PN 24 DI 16 DIO16"/>
+					<Text Value="Inline Block digitales Ein-/Ausgangsmodul für PROFINET IO-Systeme" TextId="Inline Block digitales Ein-/Ausgangsmodul für PROFINET IO-Systeme"/>
+					<Text Value="Ersatzwertverhalten" TextId="Ersatzwertverhalten"/>
+					<Text Value="Ersatzwertstrategie" TextId="Ersatzwertstrategie"/>
+					<Text Value="Ersatzwert IO1.1" TextId="Ersatzwert IO1.1"/>
+					<Text Value="Ersatzwert IO1.2" TextId="Ersatzwert IO1.2"/>
+					<Text Value="Ersatzwert IO1.3" TextId="Ersatzwert IO1.3"/>
+					<Text Value="Ersatzwert IO1.4" TextId="Ersatzwert IO1.4"/>
+					<Text Value="Ersatzwert IO2.1" TextId="Ersatzwert IO2.1"/>
+					<Text Value="Ersatzwert IO2.2" TextId="Ersatzwert IO2.2"/>
+					<Text Value="Ersatzwert IO2.3" TextId="Ersatzwert IO2.3"/>
+					<Text Value="Ersatzwert IO2.4" TextId="Ersatzwert IO2.4"/>
+					<Text Value="Ersatzwert IO3.1" TextId="Ersatzwert IO3.1"/>
+					<Text Value="Ersatzwert IO3.2" TextId="Ersatzwert IO3.2"/>
+					<Text Value="Ersatzwert IO3.3" TextId="Ersatzwert IO3.3"/>
+					<Text Value="Ersatzwert IO3.4" TextId="Ersatzwert IO3.4"/>
+					<Text Value="Ersatzwert IO4.1" TextId="Ersatzwert IO4.1"/>
+					<Text Value="Ersatzwert IO4.2" TextId="Ersatzwert IO4.2"/>
+					<Text Value="Ersatzwert IO4.3" TextId="Ersatzwert IO4.3"/>
+					<Text Value="Ersatzwert IO4.4" TextId="Ersatzwert IO4.4"/>
+					<Text Value="Alarmverhalten" TextId="Alarmverhalten"/>
+					<Text Value="Diagnosealarme" TextId="Diagnosealarme"/>
+					<Text Value="ReturnOfSubmodul Alarm" TextId="ReturnOfSubmodul Alarm"/>
+					<Text Value="Ersatzwert schalten" TextId="Ersatzwert schalten"/>
+					<Text Value="Letzten Wert halten" TextId="Letzten Wert halten"/>
+					<Text Value="0" TextId="Wert 0"/>
+					<Text Value="1" TextId="Wert 1"/>
+					<Text Value="aktiv" TextId="Diagnosealarme aktiv"/>
+					<Text Value="inaktiv" TextId="Diagnosealarme inaktiv"/>
+					<Text Value="aktiv" TextId="ReturnOfSubmodul Alarm aktiv"/>
+					<Text Value="inaktiv" TextId="ReturnOfSubmodul Alarm inaktiv"/>
+					<Text Value="DIO 16" TextId="16 digitale Ein-/Ausgänge"/>
+					<Text Value="DI 16" TextId="16 digitale Eingänge"/>
+					<Text Value="DO 16" TextId="16 digitale Ausgänge"/>
+					<Text Value="Eingänge" TextId="Eingänge"/>
+					<Text Value="Kurzschluss/Überlast der Ausgänge" TextId="Kurzschluss/Überlast der Ausgänge"/>
+					<Text Value="Kurzschluss/Überlast der Initiatorversorgung" TextId="Kurzschluss/Überlast der Initiatorversorgung"/>
+					<Text Value="US1 fehlt oder Unterspannung" TextId="US1 fehlt oder Unterspannung"/>
+					<Text Value="US2 fehlt oder Unterspannung" TextId="US2 fehlt oder Unterspannung"/>
+					<Text Value="Ethernetverbindung unterbrochen" TextId="Ethernetverbindung unterbrochen"/>
+				</Language>
+			</ExternalTextList>
+		</ApplicationProcess>
+	</ProfileBody>
+</ISO15745Profile>

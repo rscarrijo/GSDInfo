@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--  ****     Revision History   ****                                                     -->
+<!--Version No              Description / Changes                                          -->
+<!--V1.0                    Original file                                                  -->
+<!--V2.0                    Modified after review comments                                 -->
+<!--V3.0                   Added support for Port 2                              -->    
+<ISO15745Profile xmlns="http://www.profibus.com/GSDML/2003/11/DeviceProfile" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.profibus.com/GSDML/2003/11/DeviceProfile ..\XSD\GSDML-DeviceProfile-v2.2.xsd">
+  <ProfileHeader>
+    <ProfileIdentification>PROFINET Device Profile</ProfileIdentification>
+    <ProfileRevision>1.00</ProfileRevision>
+    <ProfileName>Device Profile for PROFINET Devices</ProfileName>
+    <ProfileSource>PROFIBUS Nutzerorganisation e. V. (PNO)</ProfileSource>
+    <ProfileClassID>Device</ProfileClassID>
+    <ISO15745Reference>
+      <ISO15745Part>4</ISO15745Part>
+      <ISO15745Edition>1</ISO15745Edition>
+      <ProfileTechnology>GSDML</ProfileTechnology>
+    </ISO15745Reference>
+  </ProfileHeader>
+  <ProfileBody>
+    <DeviceIdentity VendorID="0x0080" DeviceID="0x0002">
+      <InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION" />
+      <VendorName Value="Danfoss Drives AS" />
+    </DeviceIdentity>
+    <DeviceFunction>
+      <Family MainFamily="Drives" ProductFamily="VLT® FCD Series" />
+    </DeviceFunction>
+    <ApplicationProcess>
+      <DeviceAccessPointList>
+        <DeviceAccessPointItem ID="DAP 1" PhysicalSlots="0..1" ModuleIdentNumber="0x00000002" MinDeviceInterval="32" ImplementationType="NetArm" DNS_CompatibleName="DANFOSS-FCD-SERIES" ExtendedAddressAssignmentSupported="true" AddressAssignment="DCP;DHCP;LOCAL" FixedInSlots="0" ObjectUUID_LocalIndex="1" RequiredSchemaVersion="V2.2" MaxSupportedRecordSize="4068" ParameterizationSpeedupSupported="false" PowerOnToCommReady="0" NameOfStationNotTransferable="false">
+          <ModuleInfo>
+            <Name TextId="T_DRIVE_FAMILY" />
+            <InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" />
+            <VendorName Value="Danfoss Drives AS" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <SubslotList>
+            <SubslotItem SubslotNumber="32768" TextId="IDT_SS_Interface" />
+            <SubslotItem SubslotNumber="32769" TextId="IDT_SS_Port1" />
+            <SubslotItem SubslotNumber="32770" TextId="IDT_SS_Port2" />
+          </SubslotList>
+          <IOConfigData MaxInputLength="40" MaxOutputLength="40" />
+          <UseableModules>
+            <ModuleItemRef ModuleItemTarget="IDM_1" AllowedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="PPOW_3" AllowedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="PPOW_4" AllowedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="PPOW_6" AllowedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="PPOW_7" AllowedInSlots="1" />
+            <ModuleItemRef ModuleItemTarget="PPOW_8" AllowedInSlots="1" />
+            <!-- The references point to the modules of  ModuleList -->
+          </UseableModules>
+          <VirtualSubmoduleList>
+            <VirtualSubmoduleItem ID="IDS_D3" SubmoduleIdentNumber="0x00000001">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="T_DRIVE_FAMILY" />
+                <InfoText TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+          <SystemDefinedSubmoduleList>
+            <InterfaceSubmoduleItem SubslotNumber="32768" SubmoduleIdentNumber="0x0002" SupportedRT_Classes="RT_CLASS_1" TextId="T_DAP_InterfaceModule" IsochroneModeSupported="false" SupportedProtocols="SNMP;LLDP" SupportedMibs="MIB2" DCP_HelloSupported="true">
+              <ApplicationRelations NumberOfAdditionalInputCR="0" NumberOfAdditionalMulticastProviderCR="0" NumberOfAdditionalOutputCR="0" NumberOfMulticastConsumerCR="0">
+                <TimingProperties SendClock="32 64 128" ReductionRatioPow2="1 2 4 8 16 32 64 128 256 512" />
+              </ApplicationRelations>
+            </InterfaceSubmoduleItem>
+            <PortSubmoduleItem SubslotNumber="32769" SubmoduleIdentNumber="0x0003" MAUTypes="16" TextId="T_Port1" />
+            <PortSubmoduleItem SubslotNumber="32770" SubmoduleIdentNumber="0x0003" MAUTypes="16" TextId="T_Port2" />
+          </SystemDefinedSubmoduleList>
+          <Graphics>
+            <GraphicItemRef Type="DeviceSymbol" GraphicItemTarget="ID_Graph_1" />
+          </Graphics>
+        </DeviceAccessPointItem>
+      </DeviceAccessPointList>
+      <!-- ============================================================================================ -->
+      <!--                                  MODULE LIST                                                 -->
+      <!-- ============================================================================================ -->
+      <ModuleList>
+        <!--**************************************************-->
+        <!--***** virtual input module IDM_13, 64 byte   *****-->
+        <!--***** (module ID compatible to EB200/400)    *****-->
+        <!--**************************************************-->
+        <ModuleItem ID="IDM_1" ModuleIdentNumber="0x00000001">
+          <ModuleInfo>
+            <Name TextId="T_Standard_Telegram_1" />
+            <InfoText TextId="T_Standard_Telegram_1_info" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="STANDTARD_TELEGRAM_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="STANDTARD_TELEGRAM_PCD" SubmoduleIdentNumber="0x00000001" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="T_Standard_Telegram_1" />
+                <InfoText TextId="T_Standard_Telegram_1_info" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PPOW_3" ModuleIdentNumber="0x00000100">
+          <ModuleInfo>
+            <Name TextId="IDT_MOD_NAME_PPOW3" />
+            <InfoText TextId="IDT_MOD_INFO_PPOW3" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="PP0_3_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="PP0_3_PCD" SubmoduleIdentNumber="0x00000067" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="IDT_MOD_NAME_PPOW3" />
+                <InfoText TextId="IDT_MOD_INFO_PPOW3" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PPOW_4" ModuleIdentNumber="0x00000100">
+          <ModuleInfo>
+            <Name TextId="IDT_MOD_NAME_PPOW4" />
+            <InfoText TextId="IDT_MOD_INFO_PPOW4" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="PP0_4_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="PP0_4_PCD" SubmoduleIdentNumber="0x00000068" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="IDT_MOD_NAME_PPOW4" />
+                <InfoText TextId="IDT_MOD_INFO_PPOW4" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PPOW_6" ModuleIdentNumber="0x00000100">
+          <ModuleInfo>
+            <Name TextId="IDT_MOD_NAME_PPOW6" />
+            <InfoText TextId="IDT_MOD_INFO_PPOW6" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="PP0_6_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="PP0_6_PCD" SubmoduleIdentNumber="0x0000006A" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="IDT_MOD_NAME_PPOW6" />
+                <InfoText TextId="IDT_MOD_INFO_PPOW6" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PPOW_7" ModuleIdentNumber="0x00000100">
+          <ModuleInfo>
+            <Name TextId="IDT_MOD_NAME_PPOW7" />
+            <InfoText TextId="IDT_MOD_INFO_PPOW7" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="PP0_7_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="PP0_7_PCD" SubmoduleIdentNumber="0x0000006B" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="IDT_MOD_NAME_PPOW7" />
+                <InfoText TextId="IDT_MOD_INFO_PPOW7" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+        <ModuleItem ID="PPOW_8" ModuleIdentNumber="0x00000100">
+          <ModuleInfo>
+            <Name TextId="IDT_MOD_NAME_PPOW8" />
+            <InfoText TextId="IDT_MOD_INFO_PPOW8" />
+            <OrderNumber Value="130B1135" />
+            <HardwareRelease Value="4.0" />
+            <SoftwareRelease Value="1.0" />
+          </ModuleInfo>
+          <VirtualSubmoduleList>
+            <!--******* submodule 1 ******-->
+            <VirtualSubmoduleItem ID="PP0_8_PAP" SubmoduleIdentNumber="0x0000FFFF" API="14848" FixedInSubslots="1">
+              <IOData />
+              <ModuleInfo>
+                <Name TextId="IDT_SM_NAME_PAP" />
+                <InfoText TextId="IDT_SM_INFO_PAP" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+            <VirtualSubmoduleItem ID="PP0_8_PCD" SubmoduleIdentNumber="0x0000006C" API="14848" FixedInSubslots="2">
+              <IOData IOPS_Length="1" IOCS_Length="1">
+                <Input Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                  <DataItem DataType="Unsigned16" TextId="T_Input" />
+                </Input>
+                <Output Consistency="All items consistency">
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                  <DataItem DataType="Unsigned16" TextId="T_Output" />
+                </Output>
+              </IOData>
+              <ModuleInfo>
+                <Name TextId="IDT_MOD_NAME_PPOW8" />
+                <InfoText TextId="IDT_MOD_INFO_PPOW8" />
+              </ModuleInfo>
+            </VirtualSubmoduleItem>
+          </VirtualSubmoduleList>
+        </ModuleItem>
+      </ModuleList>
+      <!-- ============================================================================================ -->
+      <!--     Graphic List                    -->
+      <!-- ============================================================================================ -->
+      <GraphicsList>
+        <!-- List down the graphic file used for symbolic representation of the device   -->
+        <GraphicItem ID="ID_Graph_1" GraphicFile="FCD302" />
+      </GraphicsList>
+      <!-- ============================================================================================ -->
+      <!--                                 TEXT LISTs (english, german)                                 -->
+      <!-- ============================================================================================ -->
+      <ExternalTextList>
+        <!--===================================-->
+        <!--    primary language: english      -->
+        <!--===================================-->
+        <PrimaryLanguage>
+          <!--  -->
+          <Text TextId="T_DRIVE_FAMILY" Value="Danfoss FCD PN" />
+          <Text TextId="T_PROFINET_IO_DEV_DESCRIPTION" Value="Danfoss FCD Series" />
+          <Text TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" Value="Danfoss FCD PN" />
+          <Text TextId="IDT_SS_Interface" Value="X1" />
+          <Text TextId="IDT_SS_Port1" Value="X1 P1" />
+          <Text TextId="IDT_SS_Port2" Value="X1 P2" />
+          <Text TextId="T_DAP_InterfaceModule" Value="Interface" />
+          <Text TextId="T_Port1" Value="Port 1" />
+          <Text TextId="T_Port2" Value="Port 2" />
+          
+          <!--**** virtual modules ****-->
+          <Text TextId="T_Standard_Telegram_1" Value="Standard Telegram 1" />
+          <Text TextId="T_Standard_Telegram_1_info" Value="" />
+          <Text TextId="T_Input" Value="Inputs" />
+          <Text TextId="T_Output" Value="Outputs" />
+          
+          <!--**** other text definitions ****-->
+          <Text TextId="IDT_SM_NAME_PAP" Value="Parameter Access Point" />
+          <Text TextId="IDT_SM_INFO_PAP" Value="Parameter Access Point" />
+          
+          <!--**** Text definitions for PPO Types-->
+          <Text TextId="IDT_MOD_NAME_PPOW3" Value="PPO 3 - 2/2 Words, Danfoss Telegram 103" />          
+          <Text TextId="IDT_MOD_NAME_PPOW4" Value="PPO 4 - 6/6 Words, Danfoss Telegram 104" />
+          <Text TextId="IDT_MOD_NAME_PPOW6" Value="PPO 6 - 4/4 Words, Danfoss Telegram 106" />
+          <Text TextId="IDT_MOD_NAME_PPOW7" Value="PPO 7 - 8/8 Words, Danfoss Telegram 107" />
+          <Text TextId="IDT_MOD_NAME_PPOW8" Value="PPO 8 - 10/10 Words, Danfoss Telegram 108" />
+          
+          <Text TextId="IDT_MOD_INFO_PPOW3" Value="" />          
+          <Text TextId="IDT_MOD_INFO_PPOW4" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW6" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW7" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW8" Value="" />          
+        </PrimaryLanguage>
+        <!--======================================-->
+        <!--  second language: german -->
+        <!--======================================-->
+        <Language xml:lang="de">
+          <!--  -->
+          <Text TextId="T_DRIVE_FAMILY" Value="Danfoss FCD PN" />
+          <Text TextId="T_PROFINET_IO_DEV_DESCRIPTION" Value="Danfoss FCD Series" />
+          <Text TextId="T_PROFINET_IO_DEV_DESCRIPTION_DAP1" Value="Danfoss FCD PN" />
+          <Text TextId="IDT_SS_Interface" Value="X1" />
+          <Text TextId="IDT_SS_Port1" Value="X1 P1" />
+          <Text TextId="IDT_SS_Port2" Value="X1 P2" />
+          <Text TextId="T_DAP_InterfaceModule" Value="Interface" />
+          <Text TextId="T_Port1" Value="Port 1" />
+          <Text TextId="T_Port2" Value="Port 2" />
+          
+          <!--**** virtuelle Module ****-->
+          <Text TextId="T_Standard_Telegram_1" Value="Standart Telegram 1" />
+          <Text TextId="T_Standard_Telegram_1_info" Value="Standart Telegram 1" />
+          <Text TextId="T_Input" Value="Inputs" />
+          <Text TextId="T_Output" Value="Outputs" />
+          
+          <!--**** sonstige Textdefinitionen ****-->
+          <Text TextId="IDT_SM_NAME_PAP" Value="Parameter Access Point" />
+          <Text TextId="IDT_SM_INFO_PAP" Value="Parameter Access Point" />
+
+          <!--**** Text Definitionen für PPO-Typen  ****-->
+          <Text TextId="IDT_MOD_NAME_PPOW3" Value="PPO 3 - 2 / 2 Wörter, Danfoss Telegramm 103" />          
+          <Text TextId="IDT_MOD_NAME_PPOW4" Value="PPO 4 - 6 / 6 Wörter, Danfoss Telegramm 104" />
+          <Text TextId="IDT_MOD_NAME_PPOW6" Value="PPO 6 - 4 / 4 Wörter, Danfoss Telegramm 106" />
+          <Text TextId="IDT_MOD_NAME_PPOW7" Value="PPO 7 - 8 / 8 Wörter, Danfoss Telegramm 107" />
+          <Text TextId="IDT_MOD_NAME_PPOW8" Value="PPO 8 - 10/10 Wörter, Danfoss Telegramm 108" />
+          
+          <Text TextId="IDT_MOD_INFO_PPOW3" Value="" />          
+          <Text TextId="IDT_MOD_INFO_PPOW4" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW6" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW7" Value="" />
+          <Text TextId="IDT_MOD_INFO_PPOW8" Value="" />                 
+        </Language>
+      </ExternalTextList>
+    </ApplicationProcess>
+  </ProfileBody>
+</ISO15745Profile>
+ 
+ 
